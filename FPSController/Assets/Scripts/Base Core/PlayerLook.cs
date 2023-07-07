@@ -11,7 +11,6 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 3.5f;
     [SerializeField] [Range(0.0f, 90.0f)] private float verticalLookLimits = 90.0f;
 
-
     [Header("Mouse Cursor Settings")]
     [SerializeField] private bool lockCursor = true;
 
