@@ -11,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
 
     [Header("Gravity Variables")]
+    public float gravity = -9.81f;
 
     //PLAYER MOVEMENT
-    [SerializeField] private float forwardAxis;
-    [SerializeField] private float sideAxis;
+    private float forwardAxis;
+    private float sideAxis;
     Vector3 move;
 
     void Start()
@@ -25,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleMoveInput();
-        MovePlayer();
     }
 
     void HandleMoveInput()
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void MovePlayer()
+    public void MovePlayer()
     {
         move = transform.forward * forwardAxis + transform.right * sideAxis;
 

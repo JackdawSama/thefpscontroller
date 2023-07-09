@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 112917558}
   - component: {fileID: 112917557}
   - component: {fileID: 112917556}
+  - component: {fileID: 112917562}
+  - component: {fileID: 112917563}
   - component: {fileID: 112917561}
   m_Layer: 0
   m_Name: Player
@@ -169,7 +171,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &112917557
 CapsuleCollider:
@@ -274,8 +276,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 112917556}
   speed: 12
-  forwardAxis: 0
-  sideAxis: 0
+  gravity: -9.81
+--- !u!114 &112917562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112917555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec08bedb7e51c6148988c7b1980a0b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLook: {fileID: 0}
+  playerMovement: {fileID: 0}
+--- !u!114 &112917563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112917555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f04c6949e59ccf43b08dd1ea435fa8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1193876233}
+  playerBody: {fileID: 112917560}
+  mouseSensitivity: 100
+  verticalLookLimits: 90
+  lockCursor: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,9 +624,8 @@ GameObject:
   - component: {fileID: 1193876231}
   - component: {fileID: 1193876233}
   - component: {fileID: 1193876232}
-  - component: {fileID: 1193876234}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,22 +749,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1193876234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193876229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f04c6949e59ccf43b08dd1ea435fa8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBody: {fileID: 112917560}
-  mouseSensitivity: 100
-  verticalLookLimits: 90
-  lockCursor: 1
 --- !u!43 &1699564787
 Mesh:
   m_ObjectHideFlags: 0

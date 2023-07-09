@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [Header("Mouse Look References")]
+    [SerializeField] private Camera playerCamera = null;
     [SerializeField] private Transform playerBody = null;
 
     [Header("Mouse Look Settings")]
@@ -33,18 +34,6 @@ public class PlayerLook : MonoBehaviour
         HandleMouseInput();
     }
 
-    void LateUpdate()
-    {
-        HandleMouseLook();
-    }
-
-    /*
-    Splitting Camera rotation and Player Rotation. Late Update on Camera
-    ensures that there is no jitter on camera due to competing transform
-    updates. Player Input being handled in Update ensures that input is
-    registered every frame.
-    */
-
     void HandleMouseInput()
     {
         //Raw Input from Mouse
@@ -55,13 +44,16 @@ public class PlayerLook : MonoBehaviour
         xRot -= sens.y;
         xRot = Mathf.Clamp(xRot, -verticalLookLimits, verticalLookLimits);
 
-        //Player Body Rotation Horizontally
-        playerBody.Rotate(Vector3.up * sens.x);
+        // //Player Body Rotation Horizontally
+        // playerBody.Rotate(Vector3.up * sens.x);
     }
 
-    void HandleMouseLook()
+    public void HandleMouseLook()
     {
+        //Player Body Rotation Horizontally
+        playerBody.Rotate(Vector3.up * sens.x);
+        
         //Function to update camera vertical look rotation
-        transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+        playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
     }
 }
