@@ -18,6 +18,8 @@ public class PlayerLook : MonoBehaviour
 
     //MouseLook Input Variables
     Vector2 sens;
+
+    //xRot and yRot stand for Rotation along the X-Axis and Rotation along Y-Axis
     float xRot = 0f;
     float yRot = 0f;
 
@@ -42,14 +44,12 @@ public class PlayerLook : MonoBehaviour
         sens.x = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
         sens.y = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
+        //Update Horizontal Camera Rotation
         yRot += sens.x;
 
-        //Clamp Vertical Rotation
+        //Update Vertical Camera Rotation and Clamp Vertical Rotation
         xRot -= sens.y;
         xRot = Mathf.Clamp(xRot, -verticalLookLimits, verticalLookLimits);
-
-        // //Player Body Rotation Horizontally
-        // playerBody.Rotate(Vector3.up * sens.x);
     }
 
     public void HandleMouseLook()
