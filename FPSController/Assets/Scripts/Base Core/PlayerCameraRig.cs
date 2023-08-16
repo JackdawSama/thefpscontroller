@@ -9,6 +9,9 @@ public class PlayerCameraRig : MonoBehaviour
     
     void LateUpdate()
     {
-        transform.position = playerController.transform.position;
+        if(playerController)
+        {
+            transform.position = playerController.transform.position;
+        }
     }
 }

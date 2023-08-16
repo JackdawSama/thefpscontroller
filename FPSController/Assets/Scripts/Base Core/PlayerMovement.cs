@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
-    public Rigidbody rb;
+    //public Rigidbody rb;
 
     [Header("Movement Settings")]
     public float speed = 12f;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     void Update()
