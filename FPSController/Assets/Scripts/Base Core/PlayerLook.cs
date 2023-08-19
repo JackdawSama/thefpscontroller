@@ -55,12 +55,10 @@ public class PlayerLook : MonoBehaviour
     public void HandleMouseLook()
     {
         //Player Body Rotation Horizontally
-        //playerBody.Rotate(Vector3.up * sens.x);
         playerBody.transform.rotation = Quaternion.Euler(0f, yRot, 0f);
 
+        //Function to update camera vertical look rotation
         playerCamera.transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
         
-        //Function to update camera vertical look rotation
-        //playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
     }
 }
