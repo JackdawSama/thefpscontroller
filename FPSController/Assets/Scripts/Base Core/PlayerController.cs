@@ -19,12 +19,12 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void FixedUpdate() 
+    private void Update() 
     {
         playerMovement.MovePlayer();
     }
 
-    private void Update() 
+    private void LateUpdate() 
     {
         playerLook.HandleMouseLook();
     }
