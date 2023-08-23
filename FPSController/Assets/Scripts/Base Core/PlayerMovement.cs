@@ -6,12 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     public Camera playerCamera;
+    public CharacterController controller;
 
     [Header("Movement Settings")]
-    public float speed = 12f;
+    public float movementSpeed = 12f;
+    public float jumpHeight = 10f;
 
     [Header("Gravity Variables")]
     public float gravity = -9.81f;
+
+    [Header("Key Binds")]
+    public KeyCode Jump = KeyCode.Space;
 
     //PLAYER MOVEMENT
     private float forwardAxis;
@@ -20,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -30,14 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMoveInput()
     {
-        forwardAxis = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
-        sideAxis = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-
-        JumpInput();
-    }
-
-    void JumpInput()
-    {
+        forwardAxis = Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
+        sideAxis = Input.GetAxisRaw("Horizontal") * movementSpeed * Time.deltaTime;
 
     }
 
@@ -45,6 +44,6 @@ public class PlayerMovement : MonoBehaviour
     {
         move = transform.forward * forwardAxis + transform.right * sideAxis;
 
-        transform.position += move;
+        controller.Move(move);
     }
 }

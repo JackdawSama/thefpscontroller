@@ -576,7 +576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  speed: 12
+  controller: {fileID: 112917565}
+  physicsChecks: {fileID: 112917564}
+  movementSpeed: 12
+  jumpHeight: 10
   gravity: -9.81
 --- !u!114 &112917562
 MonoBehaviour:

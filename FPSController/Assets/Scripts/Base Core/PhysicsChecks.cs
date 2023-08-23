@@ -21,17 +21,10 @@ public class PhysicsChecks : MonoBehaviour
 
     void Update()
     {
-        if(GroundCheck())
-        {
-            Debug.Log("Grounded");
-        }
-        else
-        {
-            Debug.Log("Not Grounded");
-        }
+        GroundCheck();
     }
 
-    bool GroundCheck()
+    public bool GroundCheck()
     {
         if(Physics.BoxCast(transform.position, boxSize, - Vector3.up, transform.rotation, GroundCheckDistance, groundMask))
         {
