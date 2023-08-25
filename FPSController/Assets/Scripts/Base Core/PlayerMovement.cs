@@ -32,7 +32,16 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMoveInput();
     }
+    
+    //Functions accessible to other scripts outside of this script will be added below this comment
+    public void MovePlayer()
+    {
+        move = transform.forward * forwardAxis + transform.right * sideAxis;
 
+        controller.Move(move);
+    }
+
+    //Functions running in this script will be added below this comment
     void HandleMoveInput()
     {
         forwardAxis = Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
@@ -40,10 +49,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void MovePlayer()
-    {
-        move = transform.forward * forwardAxis + transform.right * sideAxis;
 
-        controller.Move(move);
-    }
 }

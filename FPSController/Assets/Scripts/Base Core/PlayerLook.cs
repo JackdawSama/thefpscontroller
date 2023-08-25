@@ -38,6 +38,7 @@ public class PlayerLook : MonoBehaviour
         HandleMouseInput();
     }
 
+    //Functions running in this script will be added below this comment
     void HandleMouseInput()
     {
         //Raw Input from Mouse
@@ -52,6 +53,7 @@ public class PlayerLook : MonoBehaviour
         xRot = Mathf.Clamp(xRot, -verticalLookLimits, verticalLookLimits);
     }
 
+    //Functions accessible to other scripts outside of this script will be added below this comment
     public void HandleMouseLook()
     {
         //Player Body Rotation Horizontally

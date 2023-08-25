@@ -4,8 +4,9 @@ using UnityEngine;
 
 //Think what the PlayerController does. This has to integrate with Player Look, Player Movement and Player Health.
 [RequireComponent(typeof(PlayerLook))]
-[RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PhysicsChecks))]
+[RequireComponent(typeof(PlayerBehaviours))]
+[RequireComponent(typeof(PlayerMovement))]
 
 public class PlayerController : MonoBehaviour
 {
