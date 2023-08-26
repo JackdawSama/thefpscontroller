@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     {
         move = transform.forward * forwardAxis + transform.right * sideAxis;
 
+        HandleGravity();
+
         controller.Move(move);
     }
 
@@ -49,5 +51,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void HandleGravity()
+    {
+        if(controller.isGrounded && move.y < 0)
+        {
+            move.y = -2f;
+        }
 
+        move.y += gravity * Time.deltaTime;
+    }
 }
