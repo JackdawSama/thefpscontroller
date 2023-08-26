@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement Settings")]
     public float movementSpeed = 12f;
+    public Vector3 playerVelocity;
     public float jumpHeight = 10f;
 
     [Header("Gravity Variables")]
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         move = transform.forward * forwardAxis + transform.right * sideAxis;
 
+        HandleJump();
         HandleGravity();
 
         controller.Move(move);
@@ -53,11 +55,20 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleGravity()
     {
-        if(controller.isGrounded && move.y < 0)
+        if(controller.isGrounded)
         {
-            move.y = -2f;
+            move.y = 0f;
+        }
+        if(Input.GetKeyDown(Jump) && controller.isGrounded)
+        {
+            Debug.Log("Jumped");
+            move.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         move.y += gravity * Time.deltaTime;
+    }
+
+    void HandleJump()
+    {
     }
 }
