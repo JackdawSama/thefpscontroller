@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsChecks))]
 [RequireComponent(typeof(PlayerBehaviours))]
 [RequireComponent(typeof(PlayerMovement))]
-
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]

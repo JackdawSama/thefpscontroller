@@ -37,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
         HandleMoveInput();
     }
     
-    //Functions accessible to other scripts outside of this script will be added below this comment
+    //--------------------------------------------------------------------------------
+    //PUBLIC FUNCTIONS - These scripts will be called from other scripts -------------
+    //--------------------------------------------------------------------------------
     public void MovePlayer()
     {
         move = transform.forward * forwardAxis + transform.right * sideAxis;
@@ -46,18 +48,20 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move);
     }
+    //--------------------------------------------------------------------------------
 
-    //Functions running in this script will be added below this comment
+    //--------------------------------------------------------------------------------
+    //PRIVATE FUNCTIONS - These scripts will be called from within this script -------
+    //--------------------------------------------------------------------------------
+    void HandleGravity()
+    {
+        jumpVelocity += gravity * gravityScale * Time.deltaTime;
+    }
+
     void HandleMoveInput()
     {
         forwardAxis = Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
         sideAxis = Input.GetAxisRaw("Horizontal") * movementSpeed * Time.deltaTime;
-
-    }
-
-    void HandleGravity()
-    {
-        jumpVelocity += gravity * gravityScale * Time.deltaTime;
     }
 
     void HandleJump()
@@ -70,6 +74,6 @@ public class PlayerMovement : MonoBehaviour
 
         HandleGravity();
         move.y += jumpVelocity * Time.deltaTime;
-
     }
+    //--------------------------------------------------------------------------------
 }

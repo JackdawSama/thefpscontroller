@@ -38,7 +38,24 @@ public class PlayerLook : MonoBehaviour
         HandleMouseInput();
     }
 
-    //Functions running in this script will be added below this comment
+
+    //--------------------------------------------------------------------------------
+    //PUBLIC FUNCTIONS - These scripts will be called from other scripts -------------
+    //--------------------------------------------------------------------------------
+    public void HandleMouseLook()
+    {
+        //Player Body Rotation Horizontally
+        playerBody.transform.rotation = Quaternion.Euler(0f, yRot, 0f);
+
+        //Function to update camera vertical look rotation
+        playerCamera.transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
+        
+    }
+    //--------------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------------
+    //PRIVATE FUNCTIONS - These scripts will be called from within this script -------
+    //--------------------------------------------------------------------------------
     void HandleMouseInput()
     {
         //Raw Input from Mouse
@@ -52,15 +69,5 @@ public class PlayerLook : MonoBehaviour
         xRot -= sens.y;
         xRot = Mathf.Clamp(xRot, -verticalLookLimits, verticalLookLimits);
     }
-
-    //Functions accessible to other scripts outside of this script will be added below this comment
-    public void HandleMouseLook()
-    {
-        //Player Body Rotation Horizontally
-        playerBody.transform.rotation = Quaternion.Euler(0f, yRot, 0f);
-
-        //Function to update camera vertical look rotation
-        playerCamera.transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
-        
-    }
+    //--------------------------------------------------------------------------------
 }
