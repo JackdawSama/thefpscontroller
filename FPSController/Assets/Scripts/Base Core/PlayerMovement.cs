@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gravity Variables")]
     public float gravity = -9.81f;
+    public float gravityScale = 1f;
 
     [Header("Key Binds")]
     public KeyCode Jump = KeyCode.Space;
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private float forwardAxis;
     private float sideAxis;
     Vector3 move;
+
+    private float jumpVelocity;
 
     void Start()
     {
@@ -40,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         move = transform.forward * forwardAxis + transform.right * sideAxis;
 
         HandleJump();
-        HandleGravity();
 
         controller.Move(move);
     }
@@ -55,20 +57,19 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleGravity()
     {
-        if(controller.isGrounded)
-        {
-            move.y = 0f;
-        }
-        if(Input.GetKeyDown(Jump) && controller.isGrounded)
-        {
-            Debug.Log("Jumped");
-            move.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        move.y += gravity * Time.deltaTime;
+        jumpVelocity += gravity * gravityScale * Time.deltaTime;
     }
 
     void HandleJump()
     {
+        if(Input.GetKeyDown(Jump) && controller.isGrounded)
+        {
+            Debug.Log("Jumping");
+            jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * (gravity * gravityScale));
+        }
+
+        HandleGravity();
+        move.y += jumpVelocity * Time.deltaTime;
+
     }
 }
