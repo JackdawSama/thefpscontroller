@@ -578,9 +578,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   controller: {fileID: 112917565}
-  movementSpeed: 12
-  jumpHeight: 10
+  movementSpeed: 25
+  playerVelocity: {x: 0, y: 0, z: 0}
+  jumpHeight: 5
   gravity: -9.81
+  gravityScale: 5
   Jump: 32
 --- !u!114 &112917562
 MonoBehaviour:
@@ -1746,7 +1748,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29820
+  m_Name: pb_Mesh29834
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
