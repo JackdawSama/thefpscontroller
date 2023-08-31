@@ -38,7 +38,6 @@ public class PlayerLook : MonoBehaviour
         HandleMouseInput();
     }
 
-
     //--------------------------------------------------------------------------------
     //PUBLIC FUNCTIONS - These scripts will be called from other scripts -------------
     //--------------------------------------------------------------------------------
